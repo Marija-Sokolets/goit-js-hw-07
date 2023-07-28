@@ -3,25 +3,24 @@ import { galleryItems } from './gallery-items.js';
 
 console.log(galleryItems);
 
-const galleryList = document.querySelector(".gallery");
+const gallery = document.querySelector(".gallery");
 
-const galleryMarkup = galleryItems.map(({ preview, original, description }) =>
+const markup = galleryItems.map((url) =>
     `<li class= "gallery_item">
-        <a class="gallery_link" href="${original}">
-            <img class="gallery_image" src="${preview}" alt="${description}" />
+        <a class="gallery_link" href="${url.original}">
+            <img class="gallery_image"
+            src="${url.preview}" 
+            alt="${url.description}"
+            />
         </a>
     </li>`
 ).join("");
 
-galleryList.insertAdjacentHTML("beforeend", galleryMarkup);
+gallery.insertAdjacentHTML("beforeend", markup);
 
-// galleryList.addEventListener("click", event => {
-    const SimpleLightbox (".gallery a", {
-        // captions: true,
-        // captionsType: "attr",
+    new SimpleLightbox (".gallery a", {
+        captions: true,
         captionsData: "alt",
-        // captionPosition: "bottom", 
+        captionPosition: "bottom", 
         captionDelay: 250,
-        // download: false,
     });
-// });
